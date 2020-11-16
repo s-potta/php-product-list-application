@@ -1,0 +1,63 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Products</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+    </ol>
+  </nav>
+
+<h1 class="mt-5 ml-5">Product Details</h1>
+<div class="card mt-5 ml-5 mr-5" *ngIf="productDetails">
+    <div class="card-body">
+        <div class="row mt-5 mb-5">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <img class="image-responsive" src="{{productDetails.Image}}" class="card-img-top"
+                    alt="{{productDetails.Title}}" />
+            </div>
+            <div class="col-6">
+                <h3 class="card-title">{{productDetails.Title}}</h3>
+                <hr />
+                <div class="row">
+                    <div class="col-6">
+                        <span class="light float-left font-weight-light"> Price: &nbsp;&nbsp; </span>
+                        <h5>$ {{productDetails.Price}}</h5>
+                    </div>
+                    <div class="col-6">
+                        <i class="far fa-star float-right mt-1" style="color: #007bff;"></i>
+                        <i class="far fa-star float-right mt-1" style="color: #007bff;"></i>
+                        <i class="far fa-star float-right mt-1" style="color: #007bff;"></i>
+                        <i class="far fa-star float-right mt-1" style="color: #007bff;"></i>
+                        <i class="far fa-star float-right mt-1" style="color: #007bff;"></i>
+                        <span class="light float-right font-weight-light"> Rate the product:&nbsp;&nbsp; </span>
+                    </div>
+                </div>
+                <hr />
+                <p>{{productDetails.Description}}</p>
+                <button class="btn btn-success float-right"> <i class="fal fa-shopping-cart mr-1"></i> Add to Cart
+                </button>
+                <div class="clearfix"></div>
+                <form [formGroup]="commentForm" (ngSubmit)="onAddCommentBtnClick(commentForm.value)">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comment :</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="Comment"
+                            rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-outline-primary float-right" type="submit"> <i
+                            class="far fa-comment mr-1"></i> Add Commentt
+                    </button>
+                </form>
+                <div class="clearfix"></div>
+                <div *ngIf="productDetails.Comments" class="mt-3">
+                    <div class="alert alert-secondary" role="alert" *ngFor="let comment of productDetails.Comments">
+                        {{comment.Comment}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onDeleteBtnClick(comment.Id)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+    </div>
+</div>

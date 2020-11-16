@@ -1,0 +1,14 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Products</li>
+  </ol>
+</nav>
+<h1 class="mt-5 ml-5">Products</h1>
+<div class="card mt-5 ml-5 float-left" style="width: 18rem;" *ngFor="let product of products">
+    <img class="image-responsive" src="{{product.Image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.Title}}</h5>
+      <h5>$ {{product.Price}}</h5>
+      <a routerLink="/products/{{product.Id}}" class="btn btn-primary"> View Product</a>
+    </div>
+  </div>
