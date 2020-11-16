@@ -10,7 +10,8 @@ function getProducts($id){
     }
     
     $products = [];
-    if($result = mysqli_query($con,$sql))
+    $result = $con->query($sql);
+    if($result)
     {
         $cr = 0;
         while($row = mysqli_fetch_assoc($result))
