@@ -12,7 +12,7 @@ import { Comment } from '../models/Comment';
 export class ProductService {
 
 
-  private productApi: string = "http://localhost/ecommerce/api/";
+  private productApi: string = "http://www.wiu.edu/users/sp201/yourshop/api/";
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {

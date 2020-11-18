@@ -1,22 +1,18 @@
 <?php
 
 // db credentials
-define('DB_HOST', '127.0.0.1');
-define('DB_USER', 'sp201');
-define('DB_PASS', 'Sathish@123');
+define('DB_HOST', 'mysql.wiu.edu:2521');
+define('DB_USER', 'ecomuser');
+define('DB_PASS', 'ecom1@3$5');
 define('DB_NAME', 'ecommerce');
 
-function connect()
-{
-  $connect = mysqli_connect(DB_HOST ,DB_USER ,DB_PASS ,DB_NAME);
-
-  if ($connect->connect_error) {
-    die("ERROR: Unable to connect: " . $conn->connect_error);
-  } 
-
-  mysqli_set_charset($connect, "utf8");
-
-  return $connect;
+$conn = mysql_connect("mysql.wiu.edu:2521", "ecomuser", "ecom1@3$5");
+if (!$conn) {
+  echo "Unable to connect to DB: " . mysql_error();
+  exit;
 }
 
-$con = connect();
+if (!mysql_select_db("ecommerce")) {
+  echo "Unable to select mydbname: " . mysql_error();
+  exit;
+}

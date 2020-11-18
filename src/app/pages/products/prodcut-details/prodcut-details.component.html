@@ -1,9 +1,9 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Products</a></li>
+      <li class="breadcrumb-item"><a routerLink="/products">Products</a></li>
       <li class="breadcrumb-item active" aria-current="page">Product Details</li>
     </ol>
-  </nav>
+</nav>
 
 <h1 class="mt-5 ml-5">Product Details</h1>
 <div class="card mt-5 ml-5 mr-5" *ngIf="productDetails">
@@ -36,14 +36,13 @@
                 <button class="btn btn-success float-right"> <i class="fal fa-shopping-cart mr-1"></i> Add to Cart
                 </button>
                 <div class="clearfix"></div>
-                <form [formGroup]="commentForm" (ngSubmit)="onAddCommentBtnClick(commentForm.value)">
+                <form [formGroup]="commentForm" novalidate (ngSubmit)="onAddCommentBtnClick(commentForm.value)">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Comment :</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="Comment"
-                            rows="3"></textarea>
+                            rows="3" required></textarea>
                     </div>
-                    <button class="btn btn-outline-primary float-right" type="submit"> <i
-                            class="far fa-comment mr-1"></i> Add Commentt
+                    <button class="btn btn-outline-primary float-right" [disabled]="!commentForm.valid" type="submit"> <i class="far fa-comment mr-1"></i> Add Commentt
                     </button>
                 </form>
                 <div class="clearfix"></div>

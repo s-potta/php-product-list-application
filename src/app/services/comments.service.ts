@@ -9,7 +9,7 @@ import { Comment } from 'src/app/models/Comment';
 })
 export class CommentsService {
   private currentComment: Comment;
-  private productApi: string = "http://localhost/ecommerce/api/";
+  private productApi: string = "http://www.wiu.edu/users/sp201/yourshop/api/";
   constructor(private http: HttpClient) { }
 
   postComment(comment: Comment): Observable<Comment> {
@@ -21,7 +21,7 @@ export class CommentsService {
   }
 
   deleteComment(id: number): Observable<any> {
-    return this.http.delete(this.productApi + "deleteComment.php?id="+id).pipe(map((response) => {
+    return this.http.get(this.productApi + "deleteComment.php?id="+id).pipe(map((response) => {
       return response;
     }));
   }

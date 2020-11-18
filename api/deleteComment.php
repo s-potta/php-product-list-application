@@ -12,7 +12,7 @@ if(!$id)
 // Delete.
 $sql = "DELETE FROM `comments` WHERE `id` ='{$id}' LIMIT 1";
 
-if(mysqli_query($con, $sql))
+if(mysql_query($sql))
 {
   http_response_code(204);
 }

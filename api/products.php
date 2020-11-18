@@ -6,15 +6,22 @@ function getProducts($id){
         $sql = "SELECT *, '' as comments FROM products";
     }
     else{
-    $sql = "select * from (SELECT p.id, p.title, p.description, p.image, p.price, GROUP_CONCAT(c.id,'.',c.comment) as comments FROM `products` p LEFT JOIN `comments` c ON c.product_id = p.id where p.id={$id} ORDER BY c.id) a";
+    $sql = "select * from (SELECT p.id, p.title, p.description, p.image, p.price, GROUP_CONCAT(c.id,'.',c.comment) as comments FROM `products` p LEFT JOIN `comments` c ON c.product_id = p.id where p.id={$id} GROUP BY p.id) a";
     }
     
     $products = [];
-    $result = $con->query($sql);
+    $result = mysql_query($sql);
+ 
+    
+    if (mysql_num_rows($result) == 0) {
+      echo "No rows found, nothing to print so am exiting";
+      exit;
+    }
+
     if($result)
     {
         $cr = 0;
-        while($row = mysqli_fetch_assoc($result))
+        while($row = mysql_fetch_assoc($result))
         {
             $products[$cr]['Id']    = $row['id'];
             $products[$cr]['Title'] = $row['title'];
