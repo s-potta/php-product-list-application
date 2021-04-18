@@ -6,7 +6,7 @@ define('DB_USER', 'ecomuser');
 define('DB_PASS', 'ecom1@3$5');
 define('DB_NAME', 'ecommerce');
 
-$conn = mysql_connect("mysql.wiu.edu:2521", "ecomuser", "ecom1@3$5");
+$conn = mysql_connect("localhost", "ecomuser", "ecom1@3$5");
 if (!$conn) {
   echo "Unable to connect to DB: " . mysql_error();
   exit;
